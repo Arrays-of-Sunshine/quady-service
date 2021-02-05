@@ -67,10 +67,21 @@ const csvWriteKids = csvWriter.createObjectCsvWriter({
   ]
 });
 
+const csvWriteSales = csvWriter.createObjectCsvWriter({
+  path: './csv-data/sales-records.csv',
+  append: true,
+  header: [
+    {id: 'id', title: 'id'},
+    {id: 'saleType', title: 'saleType'},
+    {id: 'saleValue', title: 'saleValue'}
+  ]
+});
+
 module.exports = {
   csvWritePrimary,
   csvWriteMens,
   csvWriteWomens,
   csvWriteTeens,
-  csvWriteKids
+  csvWriteKids,
+  csvWriteSales
 }

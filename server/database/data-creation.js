@@ -19,6 +19,14 @@ const sizes = [
   'Small', 'Medium', 'Large', 'X-Large'
 ];
 
+const salesTypes = [
+  'percentage', 'dollar'
+];
+
+const salesValues = [
+  5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95
+];
+
 let indexMensTable = 1;
 let indexWomensTable = 1;
 let indexTeensTable = 1;
@@ -80,7 +88,7 @@ const clothingMensRecords = (masterRef) => {
     record.masterRef = masterRef;
     record.size = sizes[index];
     record.msrp = faker.commerce.price();
-    record.saleStatus = randomNumber(1, 41);
+    record.saleStatus = randomNumber(1, 39);
     record.stock = randomNumber(0, 1000);
     for (let k = 0; k < colors.length; k++) {
       let innerRecord = {};
@@ -183,6 +191,26 @@ const clothingKidsRecords = (masterRef) => {
     .then(()=> console.log('wrote kid\'s records'))
 }
 
+const salesRecords = () => {
+
+  let dataHolder = [];
+  let id = 1;
+
+  for (let index = 0; index < salesTypes.length; index ++) {
+    for (let i = 0; i < salesValues.length; i ++) {
+      let record = {};
+      record.saleType = salesTypes[index];
+      record.saleValue = salesValues[i];
+      record.id = id;
+      id = id + 1;
+      dataHolder.push(record);
+    }
+  }
+  csvWriteControllers.csvWriteSales
+    .writeRecords(dataHolder)
+    .then(()=> console.log('wrote sales data'))
+}
+
 
 const masterLoop = () => {
   let counter = 0;
@@ -192,5 +220,6 @@ const masterLoop = () => {
   }
 }
 
+salesRecords();
 ColorGenerator();
 masterLoop();
