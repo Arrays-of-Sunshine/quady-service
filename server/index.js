@@ -17,6 +17,19 @@ app.use('/', express.static(path.join(__dirname, '..', 'public')));
 app.use('/bundle', express.static('public/bundle.js'))
 
 
-app.listen(PORT, ()=> {
+app.get('/api/clothing/:clothingId', (req, res) => {
+    let item = req.params.clothingId;
+    db.getItemData(item, (err, data) => {
+        if (err) {
+            console.log('GET ERROR', err);
+            res.status(400).send(err).end();
+        } else {
+            console.log('GET success');
+            res.status(200).send(data).end();
+        }
+    })
+})
+
+app.listen(PORT, () => {
     console.log(`Server listening to http://localhost:${PORT}`);
 })

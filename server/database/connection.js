@@ -33,6 +33,8 @@ DELIMITER ','
 CSV HEADER;
 `;
 
+const searchQuery = `SELECT * FROM masterRecords WHERE id = `
+
 client
   .query(dumpMaster)
   .then(res => {
@@ -59,6 +61,18 @@ client
   .catch(err => {
     console.log('error', err);
   })
-  .finally(() => {
-    client.end();
-  });
+
+  const getItemData = (id, cb) => {
+    client.query(searchQuery + id, (err, results) => {
+      if (err) {
+        console.log(err);
+      } else {
+        cb(null, results.rows);
+      }
+    })
+  }
+
+  module.exports = {
+    client,
+    getItemData
+  }
