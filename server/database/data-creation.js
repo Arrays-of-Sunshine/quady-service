@@ -72,7 +72,6 @@ const primaryRecordObjs = (counter) => {
   }
   csvWriteControllers.csvWritePrimary
     .writeRecords(dataHolder)
-    .then(()=> console.log('wrote primary records'))
 }
 
 const clothingMensRecords = (masterRef) => {
@@ -101,7 +100,6 @@ const clothingMensRecords = (masterRef) => {
   }
   csvWriteControllers.csvWriteMens
   .writeRecords(dataHolder)
-  .then(()=> console.log('wrote men\'s records'))
 }
 
 const clothingWomensRecords = (masterRef) => {
@@ -130,7 +128,6 @@ const clothingWomensRecords = (masterRef) => {
   }
   csvWriteControllers.csvWriteWomens
     .writeRecords(dataHolder)
-    .then(()=> console.log('wrote women\'s records'))
 }
 
 const clothingTeensRecords = (masterRef) => {
@@ -159,7 +156,6 @@ const clothingTeensRecords = (masterRef) => {
   }
   csvWriteControllers.csvWriteTeens
     .writeRecords(dataHolder)
-    .then(()=> console.log('wrote teen\'s records'))
 }
 
 const clothingKidsRecords = (masterRef) => {
@@ -188,7 +184,6 @@ const clothingKidsRecords = (masterRef) => {
   }
   csvWriteControllers.csvWriteKids
     .writeRecords(dataHolder)
-    .then(()=> console.log('wrote kid\'s records'))
 }
 
 const salesRecords = () => {
@@ -208,7 +203,6 @@ const salesRecords = () => {
   }
   csvWriteControllers.csvWriteSales
     .writeRecords(dataHolder)
-    .then(()=> console.log('wrote sales data'))
 }
 
 
