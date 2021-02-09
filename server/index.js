@@ -1,3 +1,4 @@
+const newrelic = require('newrelic');
 const express = require('express');
 const parser = require('body-parser');
 const path = require('path');
@@ -24,7 +25,7 @@ app.get('/api/clothing/:clothingId', (req, res) => {
             console.log('GET ERROR', err);
             res.status(400).send(err).end();
         } else {
-            console.log('GET success');
+            console.log('GET success', data);
             res.status(200).send(data).end();
         }
     })

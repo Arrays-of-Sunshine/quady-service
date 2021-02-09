@@ -56,19 +56,19 @@ const primaryRecordObjs = (counter) => {
     record.name = products[randomNumber(0, products.length)];
     record.category = categories[randomNumber(0, categories.length)];
     record.manufacturer = faker.company.companyName();
-    if (record.category === 'Men\'s') {
-      clothingMensRecords(record.id, 'men');
-    };
+    // if (record.category === 'Men\'s') {
+    //   clothingMensRecords(record.id, 'men');
+    // };
+    // if (record.category === 'Women\'s') {
+    //   clothingWomensRecords(record.id, 'women');
+    // }
+    // if (record.category === 'Young Adult\'s') {
+    //   clothingTeensRecords(record.id, 'teen');
+    // }
+    // if (record.category === 'Children\'s') {
+    //   clothingKidsRecords(record.id, 'kid');
+    // }
     dataHolder.push(record);
-    if (record.category === 'Women\'s') {
-      clothingWomensRecords(record.id, 'women');
-    }
-    if (record.category === 'Young Adult\'s') {
-      clothingTeensRecords(record.id, 'teen');
-    }
-    if (record.category === 'Children\'s') {
-      clothingKidsRecords(record.id, 'kid');
-    }
   }
   csvWriteControllers.csvWritePrimary
     .writeRecords(dataHolder)
@@ -208,7 +208,7 @@ const salesRecords = () => {
 
 const masterLoop = () => {
   let counter = 0;
-  while (counter < 10) {
+  while (counter < 10000) {
     primaryRecordObjs(counter);
     counter ++
   }
